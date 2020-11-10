@@ -1,0 +1,34 @@
+version: '3.4'
+
+services:
+  database:
+    container_name: database-sql-server
+    image: microsoft/mssql-server-linux
+    volumes:
+      - 'mssqlsystem:/var/opt/mssql'
+      - 'mssqluser:/var/opt/sqlserver'
+    environment:
+      - SA_PASSWORD=Pizz@Nice
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+    networks:
+      - controle-estoque
+
+  controleestoque:
+    container_name: controle-estoque
+    image: ${DOCKER_REGISTRY-}controleestoque
+    build:
+      context: .
+      dockerfile: ControleEstoque/Dockerfile
+    networks:
+      - controle-estoque
+
+volumes:
+    mssqlsystem:
+        external: true
+    mssqluser:
+        external: true
+
+networks: 
+  controle-estoque:
