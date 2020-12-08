@@ -13,7 +13,7 @@ namespace ControleEstoque.Infra.Data.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Cpf = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,7 +28,7 @@ namespace ControleEstoque.Infra.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     DDD = table.Column<int>(type: "int", nullable: false),
                     Numero = table.Column<long>(type: "bigint", nullable: false),
-                    ClienteId = table.Column<long>(type: "bigint", nullable: true)
+                    ClienteId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {

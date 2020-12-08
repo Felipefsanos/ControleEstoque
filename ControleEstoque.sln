@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque", "ControleEstoque\ControleEstoque.csproj", "{15F188F6-A36D-4145-AB3A-27342F49663B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque", "ControleEstoque\ControleEstoque.csproj", "{15F188F6-A36D-4145-AB3A-27342F49663B}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{FC347922-274A-43A9-8A71-85B7372288B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infra.Data.IoC", "ControleEstoque.Infra.Data.IoC\ControleEstoque.Infra.Data.IoC.csproj", "{A71F62F8-9577-40E3-9546-C9FFECBD5EE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque.Infra.Data.IoC", "ControleEstoque.Infra.Data.IoC\ControleEstoque.Infra.Data.IoC.csproj", "{A71F62F8-9577-40E3-9546-C9FFECBD5EE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infra.Data", "ControleEstoque.Infra.Data\ControleEstoque.Infra.Data.csproj", "{27BD1451-0E00-4B3A-BF1E-E594928889D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque.Infra.Data", "ControleEstoque.Infra.Data\ControleEstoque.Infra.Data.csproj", "{27BD1451-0E00-4B3A-BF1E-E594928889D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Domain", "ControleEstoque.Domain\ControleEstoque.Domain.csproj", "{BFE153E5-89B5-4774-87C7-8D9B6CE92693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque.Domain", "ControleEstoque.Domain\ControleEstoque.Domain.csproj", "{BFE153E5-89B5-4774-87C7-8D9B6CE92693}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Application", "ControleEstoque.Application\ControleEstoque.Application.csproj", "{F198C5E7-30E5-4C22-B0B6-BE2F6E5B9F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque.Application", "ControleEstoque.Application\ControleEstoque.Application.csproj", "{F198C5E7-30E5-4C22-B0B6-BE2F6E5B9F0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infra.Helpers", "..\ControleEstoque.Infra.Helpers\ControleEstoque.Infra.Helpers.csproj", "{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F198C5E7-30E5-4C22-B0B6-BE2F6E5B9F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F198C5E7-30E5-4C22-B0B6-BE2F6E5B9F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F198C5E7-30E5-4C22-B0B6-BE2F6E5B9F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

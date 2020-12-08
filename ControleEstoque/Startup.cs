@@ -44,9 +44,9 @@ namespace ControleEstoque
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
+            else if (env.IsStaging())
+                app.UseDeveloperExceptionPage();
 
             app.UseSwagger();
 
@@ -58,6 +58,8 @@ namespace ControleEstoque
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseExceptionHandler("/error");
 
             app.UseEndpoints(endpoints =>
             {
