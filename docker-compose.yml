@@ -11,7 +11,7 @@ services:
       - SA_PASSWORD=Pizz@Nice
       - ACCEPT_EULA=Y
     ports:
-      - "1433:1433"
+      - "5400:1433"
     networks:
       - controle-estoque
 
