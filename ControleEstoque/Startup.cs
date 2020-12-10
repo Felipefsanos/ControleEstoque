@@ -1,4 +1,5 @@
 using ControleEstoque.Infra.Data.IoC;
+using ControleEstoque.Infra.Helpers.Exceptions.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -6,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace ControleEstoque
 {
@@ -23,7 +25,18 @@ namespace ControleEstoque
         {
             InjetorDependecias.ConfigurarDependencias(services, configuration);
 
-            services.AddControllers();
+            services.AddControllers(options => options.Filters.Add(new ControleEstoqueExceptionFilter()));
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyOrigin();
+                        builder.AllowAnyMethod();
+                    });
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -57,9 +70,9 @@ namespace ControleEstoque
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseCors();
 
-            app.UseExceptionHandler("/error");
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

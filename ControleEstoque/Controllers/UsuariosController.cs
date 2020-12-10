@@ -1,6 +1,8 @@
 ﻿using ControleEstoque.Application.AppServices.Interfaces;
+using ControleEstoque.Application.Commands;
 using ControleEstoque.Application.Datas;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace ControleEstoque.Controllers
@@ -17,15 +19,15 @@ namespace ControleEstoque.Controllers
         }
 
         [HttpPost]
-        public void CriarUsuario()
+        public void CriarUsuario(CriarUsuarioCommand criarUsuarioCommand)
         {
-            usuariosAppService.CriarUsuario(null);
+            usuariosAppService.CriarUsuario(criarUsuarioCommand);
         }
 
         [HttpPut("{id}")]
         public void EditarUsuario()
         {
-
+            throw new Exception("Exception genérica");
         }
 
         [HttpDelete]
