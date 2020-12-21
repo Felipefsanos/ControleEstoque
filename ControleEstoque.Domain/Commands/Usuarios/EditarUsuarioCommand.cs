@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ControleEstoque.Application.Commands
+namespace ControleEstoque.Domain.Commands.Usuarios
 {
-    public class CriarUsuarioCommand
+    public class EditarUsuarioCommand
     {
+        public long Id { get; set; }
         public string Nome { get; set; }
-        public decimal Cpf { get; set; }
         public string Login { get; set; }
         public string Senha { get; set; }
     }

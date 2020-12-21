@@ -2,12 +2,12 @@
 using ControleEstoque.Application.AppServices;
 using ControleEstoque.Application.AppServices.Interfaces;
 using ControleEstoque.Domain.Repositories;
+using ControleEstoque.Domain.UnitOfWork;
 using ControleEstoque.Infra.Data.Context;
 using ControleEstoque.Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace ControleEstoque.Infra.Data.IoC
 {
@@ -29,12 +29,12 @@ namespace ControleEstoque.Infra.Data.IoC
 
         private static void ConfigurarServices(IServiceCollection services)
         {
-            services.AddScoped<IUsuariosAppService, UsuariosAppService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
         }
 
         private static void ConfigurarAppServices(IServiceCollection services)
         {
-            
+            services.AddScoped<IUsuariosAppService, UsuariosAppService>();
         }
 
         private static void ConfigurarAutoMapper(IServiceCollection services)

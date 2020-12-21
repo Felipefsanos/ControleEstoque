@@ -1,8 +1,6 @@
-﻿using ControleEstoque.Application.Commands;
-using ControleEstoque.Application.Datas;
-using System;
+﻿using ControleEstoque.Application.Datas;
+using ControleEstoque.Domain.Commands.Usuarios;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ControleEstoque.Application.AppServices.Interfaces
 {
@@ -11,5 +9,11 @@ namespace ControleEstoque.Application.AppServices.Interfaces
         IEnumerable<UsuarioData> ObterUsuarios();
 
         void CriarUsuario(CriarUsuarioCommand command);
+
+        void EditarUsuario(EditarUsuarioCommand command);
+
+        void RemoverUsuario(long id);
+
+        UsuarioData ObterUsuario(long id);
     }
 }

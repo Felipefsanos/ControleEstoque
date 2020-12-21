@@ -1,6 +1,6 @@
 ﻿using ControleEstoque.Application.AppServices.Interfaces;
-using ControleEstoque.Application.Commands;
 using ControleEstoque.Application.Datas;
+using ControleEstoque.Domain.Commands.Usuarios;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,15 +25,16 @@ namespace ControleEstoque.Controllers
         }
 
         [HttpPut("{id}")]
-        public void EditarUsuario()
+        public void EditarUsuario(long id, EditarUsuarioCommand editarUsuarioCommand)
         {
-            throw new Exception("Exception genérica");
+            editarUsuarioCommand.Id = id;
+            usuariosAppService.EditarUsuario(editarUsuarioCommand);
         }
 
-        [HttpDelete]
-        public void RemoverUsuario()
+        [HttpDelete("{id}")]
+        public void RemoverUsuario(long id)
         {
-
+            usuariosAppService.RemoverUsuario(id);
         }
 
         [HttpGet]
@@ -43,9 +44,9 @@ namespace ControleEstoque.Controllers
         }
 
         [HttpGet("{id}")]
-        public void ObterUsuario()
+        public UsuarioData ObterUsuario(long id)
         {
-
+            return usuariosAppService.ObterUsuario(id);
         }
     }
 }
