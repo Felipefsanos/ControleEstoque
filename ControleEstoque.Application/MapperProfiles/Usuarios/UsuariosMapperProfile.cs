@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ControleEstoque.Application.MapperProfiles
+namespace ControleEstoque.Application.MapperProfiles.Usuarios
 {
     public class UsuariosMapperProfile : Profile
     {

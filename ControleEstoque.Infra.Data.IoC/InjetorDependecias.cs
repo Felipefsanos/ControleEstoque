@@ -1,10 +1,16 @@
 ﻿using AutoMapper;
 using ControleEstoque.Application.AppServices;
+using ControleEstoque.Application.AppServices.Clientes;
 using ControleEstoque.Application.AppServices.Interfaces;
+using ControleEstoque.Application.AppServices.Interfaces.Clientes;
+using ControleEstoque.Application.AppServices.Interfaces.Telefones;
+using ControleEstoque.Application.AppServices.Telefones;
 using ControleEstoque.Domain.Repositories;
+using ControleEstoque.Domain.Repositories.Clientes;
 using ControleEstoque.Domain.UnitOfWork;
 using ControleEstoque.Infra.Data.Context;
 using ControleEstoque.Infra.Data.Repositories;
+using ControleEstoque.Infra.Data.Repositories.Clientes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +31,7 @@ namespace ControleEstoque.Infra.Data.IoC
         private static void ConnfigurarRepositories(IServiceCollection services)
         {
             services.AddScoped<IUsuariosRepository, UsuariosRepository>();
+            services.AddScoped<IClientesRepository, ClientesRepository>();
         }
 
         private static void ConfigurarServices(IServiceCollection services)
@@ -35,6 +42,8 @@ namespace ControleEstoque.Infra.Data.IoC
         private static void ConfigurarAppServices(IServiceCollection services)
         {
             services.AddScoped<IUsuariosAppService, UsuariosAppService>();
+            services.AddScoped<IClientesAppService, ClientesAppService>();
+            services.AddScoped<ITelefonesAppService, TelefonesAppService>();
         }
 
         private static void ConfigurarAutoMapper(IServiceCollection services)
