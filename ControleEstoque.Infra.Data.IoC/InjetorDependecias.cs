@@ -53,7 +53,8 @@ namespace ControleEstoque.Infra.Data.IoC
 
         private static void ConfigurarDatabases(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ControleEstoqueContext>(options => options.UseSqlServer(configuration.GetConnectionString("SqlServer"), x => x.MigrationsAssembly("ControleEstoque.Infra.Data")));
+            services.AddDbContext<ControleEstoqueContext>(options => options.UseLazyLoadingProxies()
+                                                                            .UseSqlServer(configuration.GetConnectionString("SqlServer"), x => x.MigrationsAssembly("ControleEstoque.Infra.Data")));
         }
     }
 }

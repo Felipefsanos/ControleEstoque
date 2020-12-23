@@ -8,5 +8,7 @@ namespace ControleEstoque.Application.AppServices.Interfaces.Telefones
     public interface ITelefonesAppService
     {
         void AdicionarTelefone(decimal cpfCliente, CriarTelefoneCommand criarTelefoneCommand);
+
+        void EditarTelefone(EditarTelefoneCommand editarTelefoneCommand);
     }
 }

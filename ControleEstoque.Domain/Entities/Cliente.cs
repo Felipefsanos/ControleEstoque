@@ -5,6 +5,7 @@ using ControleEstoque.Infra.Helpers.ExtensionsMethods;
 using ControleEstoque.Infra.Helpers.ValidacaoUtils;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ControleEstoque.Domain.Entities
 {
@@ -12,7 +13,7 @@ namespace ControleEstoque.Domain.Entities
     {
         public decimal Cpf { get; set; }
         public string Nome { get; set; }
-        public List<Telefone> Telefones { get; set; }
+        public virtual ICollection<Telefone> Telefones { get; set; }
 
         public Cliente()
         {

@@ -26,12 +26,12 @@ namespace ControleEstoque.Controllers
             telefonesAppService.AdicionarTelefone(cpf, criarTelefoneCommand);
         }
 
-        //[HttpPut("{id}")]
-        //public void EditarCliente(long id, EditarClienteCommand editarClienteCommand)
-        //{
-        //    editarClienteCommand.Id = id;
-        //    clientesAppService.EditarCliente(editarClienteCommand);
-        //}
+        [HttpPut("{id}")]
+        public void AdicionarTelefone(long id, EditarTelefoneCommand editarTelefoneCommand)
+        {
+            editarTelefoneCommand.Id = id;
+            telefonesAppService.EditarTelefone(editarTelefoneCommand);
+        }
 
         //[HttpDelete("{id}")]
         //public void RemoverCliente(long id)

@@ -12,19 +12,35 @@ namespace ControleEstoque.Domain.Entities
     {
         public int DDD { get; set; }
         public long Numero { get; set; }
+        //public virtual Cliente Cliente { get; set; }
 
         public Telefone()
         {
 
         }
 
-        public Telefone(CriarTelefoneCommand telefone)
+        public Telefone(CriarTelefoneCommand criarTelefoneCommand)
         {
-            ValidacaoLogica.IsFalse<ValidacaoException>(telefone.DDD > 0 && telefone.DDD < 99, "DDD inválido.");
-            ValidacaoLogica.IsFalse<ValidacaoException>(telefone.Numero.ToString().Length == 9 || telefone.Numero.ToString().Length == 8, "Número inválido, não reconhecido como celular e nem como fixo");
+            ValidarPropriedades(criarTelefoneCommand.DDD, criarTelefoneCommand.Numero);
 
-            DDD = telefone.DDD;
-            Numero = telefone.Numero;
+            DDD = criarTelefoneCommand.DDD;
+            Numero = criarTelefoneCommand.Numero;
         }
+
+        public void Editar(EditarTelefoneCommand editarTelefoneCommand)
+        {
+            ValidarPropriedades(editarTelefoneCommand.DDD, editarTelefoneCommand.Numero);
+
+            DDD = editarTelefoneCommand.DDD;
+            Numero = editarTelefoneCommand.Numero;
+        }
+
+        private static void ValidarPropriedades(int DDD, long Numero)
+        {
+            ValidacaoLogica.IsFalse<ValidacaoException>(DDD > 0 && DDD < 99, "DDD inválido.");
+            ValidacaoLogica.IsFalse<ValidacaoException>(Numero.ToString().Length == 9 || Numero.ToString().Length == 8, "Número inválido, não reconhecido como celular e nem como fixo");
+        }
+
+        
     }
 }
