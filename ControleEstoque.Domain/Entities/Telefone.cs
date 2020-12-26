@@ -12,7 +12,6 @@ namespace ControleEstoque.Domain.Entities
     {
         public int DDD { get; set; }
         public long Numero { get; set; }
-        //public virtual Cliente Cliente { get; set; }
 
         public Telefone()
         {

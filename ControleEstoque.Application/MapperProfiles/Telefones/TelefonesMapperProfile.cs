@@ -12,7 +12,7 @@ namespace ControleEstoque.Application.MapperProfiles.Telefones
         public TelefonesMapperProfile()
         {
             CreateMap<TelefoneData, Telefone>();
-            CreateMap<Cliente, TelefoneData>();
+            CreateMap<Telefone, TelefoneData>();
         }
     }
 }

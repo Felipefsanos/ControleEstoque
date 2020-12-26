@@ -1,21 +1,26 @@
-﻿using ControleEstoque.Application.AppServices.Interfaces.Clientes;
+﻿using AutoMapper;
+using ControleEstoque.Application.AppServices.Interfaces.Clientes;
+using ControleEstoque.Application.Datas;
 using ControleEstoque.Domain.Commands.Clientes;
 using ControleEstoque.Domain.Repositories.Clientes;
 using ControleEstoque.Domain.UnitOfWork;
 using ControleEstoque.Infra.Helpers.Exceptions;
 using ControleEstoque.Infra.Helpers.ValidacaoUtils;
+using System.Collections.Generic;
 
 namespace ControleEstoque.Application.AppServices.Clientes
 {
     public class ClientesAppService : IClientesAppService
     {
         private readonly IClientesRepository clientesRepository;
+        private readonly IMapper mapper;
         private readonly IUnitOfWork unitOfWork;
 
-        public ClientesAppService(IClientesRepository clientesRepository, IUnitOfWork unitOfWork)
+        public ClientesAppService(IClientesRepository clientesRepository, IUnitOfWork unitOfWork, IMapper mapper)
         {
             this.clientesRepository = clientesRepository;
             this.unitOfWork = unitOfWork;
+            this.mapper = mapper;
         }
 
         public void CriarCliente(CriarClienteCommand criarClienteCommand)
@@ -47,5 +52,34 @@ namespace ControleEstoque.Application.AppServices.Clientes
 
             unitOfWork.SaveChanges();
         }
+
+        public void RemoverCliente(long id)
+        {
+            var cliente = clientesRepository.ObterUm(x => x.Id == id);
+
+            ValidacaoLogica.IsTrue<RecursoNaoEncontradoException>(cliente is null, "Cliente não encontrado.");
+
+            clientesRepository.Remover(cliente);
+
+            unitOfWork.SaveChanges();
+        }
+
+        public ClienteData ObterCliente(decimal cpf)
+        {
+            var cliente = clientesRepository.ObterUm(x => x.Cpf == cpf);
+
+            ValidacaoLogica.IsTrue<RecursoNaoEncontradoException>(cliente is null, "Cliente não encontrado.");
+
+            return mapper.Map<ClienteData>(cliente);
+        }
+
+        public IEnumerable<ClienteData> ObterTodosClientes()
+        {
+            var cliente = clientesRepository.ObterTodos();
+
+            return mapper.Map<IEnumerable<ClienteData>>(cliente);
+        }
+
+        
     }
 }

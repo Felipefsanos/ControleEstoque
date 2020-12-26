@@ -37,18 +37,19 @@ namespace ControleEstoque.Controllers
         [HttpDelete("{id}")]
         public void RemoverCliente(long id)
         {
+            clientesAppService.RemoverCliente(id);
         }
 
         [HttpGet]
         public IEnumerable<ClienteData> ObterClientes()
         {
-            return null;
+            return clientesAppService.ObterTodosClientes();
         }
 
-        [HttpGet("{id}")]
-        public ClienteData ObterCliente(long id)
+        [HttpGet("{cpf}")]
+        public ClienteData ObterCliente(decimal cpf)
         {
-            return null;
+            return clientesAppService.ObterCliente(cpf);
         }
     }
 }

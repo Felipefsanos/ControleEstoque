@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ControleEstoque.Application.AppServices.Interfaces.Telefones;
+using ControleEstoque.Application.Datas;
 using ControleEstoque.Domain.Commands.Telefones;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,18 @@ namespace ControleEstoque.Controllers
         {
             editarTelefoneCommand.Id = id;
             telefonesAppService.EditarTelefone(editarTelefoneCommand);
+        }
+
+        [HttpDelete("{id}")]
+        public void AdicionarTelefone(long id)
+        {
+            telefonesAppService.RemoverTelefone(id);
+        }
+
+        [HttpGet("{cpf}")]
+        public IEnumerable<TelefoneData> ObterTelefonesCliente(decimal cpf)
+        {
+            return telefonesAppService.ObterTelefonesCliente(cpf);
         }
 
         //[HttpDelete("{id}")]

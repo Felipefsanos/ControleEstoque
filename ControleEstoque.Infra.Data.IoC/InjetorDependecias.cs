@@ -7,10 +7,12 @@ using ControleEstoque.Application.AppServices.Interfaces.Telefones;
 using ControleEstoque.Application.AppServices.Telefones;
 using ControleEstoque.Domain.Repositories;
 using ControleEstoque.Domain.Repositories.Clientes;
+using ControleEstoque.Domain.Repositories.Telefones;
 using ControleEstoque.Domain.UnitOfWork;
 using ControleEstoque.Infra.Data.Context;
 using ControleEstoque.Infra.Data.Repositories;
 using ControleEstoque.Infra.Data.Repositories.Clientes;
+using ControleEstoque.Infra.Data.Repositories.Telefones;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,6 +34,7 @@ namespace ControleEstoque.Infra.Data.IoC
         {
             services.AddScoped<IUsuariosRepository, UsuariosRepository>();
             services.AddScoped<IClientesRepository, ClientesRepository>();
+            services.AddScoped<ITelefonesRepository, TelefonesRepository>();
         }
 
         private static void ConfigurarServices(IServiceCollection services)
