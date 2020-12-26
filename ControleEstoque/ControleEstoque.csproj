@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ControleEstoque.Application\ControleEstoque.Application.csproj" />
     <ProjectReference Include="..\ControleEstoque.Infra.Data.IoC\ControleEstoque.Infra.Data.IoC.csproj" />
+    <ProjectReference Include="..\ControleEstoque.Infra.Helpers\ControleEstoque.Infra.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

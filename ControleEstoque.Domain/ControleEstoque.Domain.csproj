@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\ControleEstoque.Infra.Helpers\ControleEstoque.Infra.Helpers.csproj" />
+    <ProjectReference Include="..\ControleEstoque.Infra.Helpers\ControleEstoque.Infra.Helpers.csproj" />
   </ItemGroup>
 
   <ItemGroup>

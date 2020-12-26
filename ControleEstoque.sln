@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque.Domain", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControleEstoque.Application", "ControleEstoque.Application\ControleEstoque.Application.csproj", "{F198C5E7-30E5-4C22-B0B6-BE2F6E5B9F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infra.Helpers", "..\ControleEstoque.Infra.Helpers\ControleEstoque.Infra.Helpers.csproj", "{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControleEstoque.Infra.Helpers", "ControleEstoque.Infra.Helpers\ControleEstoque.Infra.Helpers.csproj", "{C8E7DD51-98B1-4513-9FD7-6BD373DA5A5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

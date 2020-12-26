@@ -3,9 +3,7 @@ using ControleEstoque.Domain.Entities.Base;
 using ControleEstoque.Infra.Helpers.Exceptions;
 using ControleEstoque.Infra.Helpers.ExtensionsMethods;
 using ControleEstoque.Infra.Helpers.ValidacaoUtils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ControleEstoque.Domain.Entities
 {

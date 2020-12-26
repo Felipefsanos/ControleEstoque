@@ -1,10 +1,5 @@
 ﻿using ControleEstoque.Domain.Commands.Telefones;
-using ControleEstoque.Infra.Helpers.Exceptions;
-using ControleEstoque.Infra.Helpers.ExtensionsMethods;
-using ControleEstoque.Infra.Helpers.ValidacaoUtils;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ControleEstoque.Domain.Commands.Clientes
 {
