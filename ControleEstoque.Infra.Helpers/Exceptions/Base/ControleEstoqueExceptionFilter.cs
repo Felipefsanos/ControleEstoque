@@ -1,13 +1,9 @@
 ﻿using ControleEstoque.Infra.Helpers.Attributes;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace ControleEstoque.Infra.Helpers.Exceptions.Base
 {

@@ -13,9 +13,13 @@ using ControleEstoque.Infra.Data.Context;
 using ControleEstoque.Infra.Data.Repositories;
 using ControleEstoque.Infra.Data.Repositories.Clientes;
 using ControleEstoque.Infra.Data.Repositories.Telefones;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Text;
 
 namespace ControleEstoque.Infra.Data.IoC
 {
@@ -23,11 +27,33 @@ namespace ControleEstoque.Infra.Data.IoC
     {
         public static void ConfigurarDependencias(IServiceCollection services, IConfiguration configuration)
         {
+            ConfigurarJwt(services, configuration);
             ConfigurarDatabases(services, configuration);
             ConfigurarAutoMapper(services);
             ConfigurarAppServices(services);
             ConfigurarServices(services);
             ConnfigurarRepositories(services);
+        }
+
+        private static void ConfigurarJwt(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = configuration["Jwt:Issuer"],
+                        ValidAudience = configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"])),
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
         }
 
         private static void ConnfigurarRepositories(IServiceCollection services)
