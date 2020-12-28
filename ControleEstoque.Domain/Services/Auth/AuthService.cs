@@ -27,11 +27,13 @@ namespace ControleEstoque.Domain.Services.Auth
         {
             ValidacaoLogica.IsTrue<ValidacaoException>(loginCommand is null, "Comando de login não pode ser nulo.");
 
+            loginCommand.Validar();
+
             var usuario = usuariosRepository.ObterUm(x => x.Login == loginCommand.Login);
 
-            ValidacaoLogica.IsTrue<ValidacaoException>(usuario is null, "Usuário não encontrado.");
+            ValidacaoLogica.IsTrue<RecursoNaoEncontradoException>(usuario is null, "Usuário não encontrado.");
 
-            ValidacaoLogica.IsTrue<ValidacaoException>(usuario.Senha != loginCommand.Senha, "Senha incorrenta.");
+            ValidacaoLogica.IsTrue<NaoAutorizadoException>(usuario.Senha != loginCommand.Senha, "Senha incorrenta.");
 
             // TODO: Implementar as roles
             var token = jwtHelper.GerarTokenAcesso(usuario.Nome, usuario.Cpf, null);

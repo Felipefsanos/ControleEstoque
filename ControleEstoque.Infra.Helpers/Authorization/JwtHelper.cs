@@ -26,7 +26,7 @@ namespace ControleEstoque.Infra.Helpers.Authorization
 			{
 			new Claim(JwtRegisteredClaimNames.Sub, cpf.ToString()),
 			new Claim("nomeCompleto", nomeCompleto),
-			new Claim("roles", roles),
+			new Claim("roles", "Pizza"),
 			new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
 		};
 			return  new JwtSecurityToken(

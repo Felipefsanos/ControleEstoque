@@ -8,11 +8,15 @@ using ControleEstoque.Application.AppServices.Telefones;
 using ControleEstoque.Domain.Repositories;
 using ControleEstoque.Domain.Repositories.Clientes;
 using ControleEstoque.Domain.Repositories.Telefones;
+using ControleEstoque.Domain.Services.Auth;
+using ControleEstoque.Domain.Services.Interfaces.Auth;
 using ControleEstoque.Domain.UnitOfWork;
 using ControleEstoque.Infra.Data.Context;
 using ControleEstoque.Infra.Data.Repositories;
 using ControleEstoque.Infra.Data.Repositories.Clientes;
 using ControleEstoque.Infra.Data.Repositories.Telefones;
+using ControleEstoque.Infra.Helpers.Authorization;
+using ControleEstoque.Infra.Helpers.Authorization.Interface;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -66,6 +70,8 @@ namespace ControleEstoque.Infra.Data.IoC
         private static void ConfigurarServices(IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IJwtHelper, JwtHelper>();
         }
 
         private static void ConfigurarAppServices(IServiceCollection services)

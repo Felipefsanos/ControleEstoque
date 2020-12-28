@@ -12,13 +12,10 @@ namespace ControleEstoque.Domain.Commands.Login
         public string Login { get; set; }
         public string Senha { get; set; }
 
-        public LoginCommand(string usuario, string senha)
+        public void Validar()
         {
-            ValidacaoLogica.IsTrue<ValidacaoException>(usuario.IsNullOrEmpty(), "Usuário deve ser informado.");
-            ValidacaoLogica.IsTrue<ValidacaoException>(senha.IsNullOrEmpty(), "Senha deve ser informada.");
-
-            Login = usuario;
-            Senha = senha;
+            ValidacaoLogica.IsTrue<ValidacaoException>(Login.IsNullOrEmpty(), "Usuário deve ser informado.");
+            ValidacaoLogica.IsTrue<ValidacaoException>(Senha.IsNullOrEmpty(), "Senha deve ser informada.");
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ControleEstoque.Application.AppServices.Interfaces.Clientes;
 using ControleEstoque.Application.Datas;
 using ControleEstoque.Domain.Commands.Clientes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace ControleEstoque.Controllers
 {
     [Route("api/clientes")]
     [ApiController]
+    [Authorize]
     public class ClientesController : ControllerBase
     {
         private readonly IClientesAppService clientesAppService;

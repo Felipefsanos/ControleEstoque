@@ -49,6 +49,14 @@ namespace ControleEstoque
                         Name = "Felipefsanos",
                     }
                 });
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "Jwt Token",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http
+                });
             });
         }
 
