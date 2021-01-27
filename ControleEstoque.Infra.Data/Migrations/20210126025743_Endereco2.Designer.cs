@@ -4,14 +4,16 @@ using ControleEstoque.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleEstoque.Infra.Data.Migrations
 {
     [DbContext(typeof(ControleEstoqueContext))]
-    partial class ControleEstoqueContextModelSnapshot : ModelSnapshot
+    [Migration("20210126025743_Endereco2")]
+    partial class Endereco2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

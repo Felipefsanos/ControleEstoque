@@ -4,14 +4,16 @@ using ControleEstoque.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ControleEstoque.Infra.Data.Migrations
 {
     [DbContext(typeof(ControleEstoqueContext))]
-    partial class ControleEstoqueContextModelSnapshot : ModelSnapshot
+    [Migration("20210126025409_Endereco")]
+    partial class Endereco
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,7 +64,8 @@ namespace ControleEstoque.Infra.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Estado")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("Logradouro")
                         .HasColumnType("nvarchar(max)");

@@ -11,7 +11,9 @@ namespace ControleEstoque.Domain.Entities
     {
         public decimal Cpf { get; set; }
         public string Nome { get; set; }
+        public string Email { get; set; }
         public virtual ICollection<Telefone> Telefones { get; set; }
+        public virtual Endereco Endereco { get; set; }
 
         public Cliente()
         {
@@ -24,8 +26,10 @@ namespace ControleEstoque.Domain.Entities
 
             Cpf = command.Cpf;
             Nome = command.Nome;
+            Email = command.Email;
 
             AdicionarTelefones(command);
+            Endereco = new Endereco(command.Endereco);
         }
 
         private void AdicionarTelefones(CriarClienteCommand command)
@@ -57,6 +61,8 @@ namespace ControleEstoque.Domain.Entities
             ValidacaoLogica.IsTrue<ValidacaoException>(editarClienteCommand.Nome.IsNullOrWhiteSpace(), "Nome não pode ser nulo nem espaço em branco");
 
             Nome = editarClienteCommand.Nome;
+            if (!editarClienteCommand.Email.IsNullOrWhiteSpace())
+                Email = editarClienteCommand.Email;
         }
     }
 }
