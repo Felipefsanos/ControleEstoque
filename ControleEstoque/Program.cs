@@ -20,7 +20,16 @@ namespace ControleEstoque
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+
+#if DEBUG
                     webBuilder.UseStartup<Startup>();
+#else
+                    var port = Environment.GetEnvironmentVariable("PORT");
+
+                    webBuilder.UseStartup<Startup>()
+                    .UseUrls("http://*:" + port);
+#endif
+
                 });
     }
 }

@@ -25,6 +25,8 @@ namespace ControleEstoque
         {
             InjetorDependecias.ConfigurarDependencias(services, configuration);
 
+            services.AddHttpsRedirection(options => { options.HttpsPort = 443; });
+
             services.AddControllers(options => options.Filters.Add(new ControleEstoqueExceptionFilter()));
 
             services.AddCors(options =>
