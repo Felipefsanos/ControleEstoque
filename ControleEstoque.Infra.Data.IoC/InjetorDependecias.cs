@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ControleEstoque.Application.AppServices;
+﻿using ControleEstoque.Application.AppServices;
 using ControleEstoque.Application.AppServices.Clientes;
 using ControleEstoque.Application.AppServices.Interfaces;
 using ControleEstoque.Application.AppServices.Interfaces.Clientes;
@@ -33,7 +32,6 @@ namespace ControleEstoque.Infra.Data.IoC
         {
             ConfigurarJwt(services, configuration);
             ConfigurarDatabases(services, configuration);
-            ConfigurarAutoMapper(services);
             ConfigurarAppServices(services);
             ConfigurarServices(services);
             ConnfigurarRepositories(services);
@@ -79,11 +77,6 @@ namespace ControleEstoque.Infra.Data.IoC
             services.AddScoped<IUsuariosAppService, UsuariosAppService>();
             services.AddScoped<IClientesAppService, ClientesAppService>();
             services.AddScoped<ITelefonesAppService, TelefonesAppService>();
-        }
-
-        private static void ConfigurarAutoMapper(IServiceCollection services)
-        {
-            services.AddAutoMapper(config => config.AddMaps("ControleEstoque.Application"));
         }
 
         private static void ConfigurarDatabases(IServiceCollection services, IConfiguration configuration)

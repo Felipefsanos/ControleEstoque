@@ -1,5 +1,6 @@
 ﻿using ControleEstoque.Domain.Repositories.Base;
 using ControleEstoque.Infra.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,37 +19,47 @@ namespace ControleEstoque.Infra.Data.Repositories.Base
 
         public void Adicionar(T entity)
         {
-            context.Add(entity);
+            context.Set<T>().Add(entity);
+        }
+
+        public void Adicionar(IEnumerable<T> entities)
+        {
+            context.Set<T>().AddRange(entities);
         }
 
         public void Remover(T entity)
         {
-            context.Remove(entity);
+            context.Set<T>().Remove(entity);
         }
 
-        public IEnumerable<T> Obter(Expression<Func<T, bool>> predicate)
+        public void Remover(IEnumerable<T> entities)
         {
-            return context.Set<T>().Where(predicate).ToList();
+            context.Set<T>().RemoveRange(entities);
         }
 
-        public IEnumerable<T> ObterTodos()
+        public void Atualizar(IEnumerable<T> entities)
         {
-            return context.Set<T>().ToList();
-        }
-
-        public T Obter(int id)
-        {
-            return context.Set<T>().Find(id);
-        }
-
-        public T ObterUm(Expression<Func<T, bool>> predicate)
-        {
-            return context.Set<T>().Where(predicate).FirstOrDefault();
+            context.Set<T>().UpdateRange(entities);
         }
 
         public void Atualizar(T entity)
         {
-            context.Update(entity);
+            context.Set<T>().Update(entity);
+        }
+
+        public T ObterUm(Expression<Func<T, bool>> predicate, params string[] includes)
+        {
+            return context.GetDbSetWithIncludes<T>(includes).FirstOrDefault(predicate);
+        }
+
+        public IQueryable<T> Obter(Expression<Func<T, bool>> predicate, params string[] includes)
+        {
+            return context.GetDbSetWithIncludes<T>(includes).Where(predicate);
+        }
+
+        public IQueryable<T> ObterTodos(params string[] includes)
+        {
+            return context.GetDbSetWithIncludes<T>(includes);
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿using AutoMapper;
-using ControleEstoque.Application.AppServices.Interfaces;
+﻿using ControleEstoque.Application.AppServices.Interfaces;
 using ControleEstoque.Application.Datas;
 using ControleEstoque.Domain.Commands.Usuarios;
 using ControleEstoque.Domain.Entities;
 using ControleEstoque.Domain.Repositories;
 using ControleEstoque.Domain.UnitOfWork;
 using ControleEstoque.Infra.Helpers.Exceptions;
-using ControleEstoque.Infra.Helpers.ExtensionsMethods;
+using ControleEstoque.Infra.Helpers.Utils.Mapper;
 using ControleEstoque.Infra.Helpers.ValidacaoUtils;
 using System.Collections.Generic;
 
@@ -16,12 +15,10 @@ namespace ControleEstoque.Application.AppServices
     {
         private readonly IUsuariosRepository usuariosRepository;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IMapper mapper;
 
-        public UsuariosAppService(IUsuariosRepository usuariosRepository, IMapper mapper, IUnitOfWork unitOfWork)
+        public UsuariosAppService(IUsuariosRepository usuariosRepository, IUnitOfWork unitOfWork)
         {
             this.usuariosRepository = usuariosRepository;
-            this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
 
@@ -69,16 +66,16 @@ namespace ControleEstoque.Application.AppServices
         {
             var usuario = usuariosRepository.ObterUm(x => x.Id == id);
 
-            return mapper.Map<UsuarioData>(usuario);
+            return Mapper.MapTo<UsuarioData>(usuario);
         }
 
         public IEnumerable<UsuarioData> ObterUsuarios()
         {
             var usuarios = usuariosRepository.ObterTodos();
 
-            return mapper.Map<IEnumerable<UsuarioData>>(usuarios);
+            return Mapper.MapTo<IEnumerable<UsuarioData>>(usuarios);
         }
 
-        
+
     }
 }

@@ -9,6 +9,8 @@ namespace ControleEstoque.Application.Datas
         public long Id { get; set; }
         public decimal Cpf { get; set; }
         public string Nome { get; set; }
-        public virtual IEnumerable<TelefoneData> Telefones { get; set; }
+        public string Email { get; set; }
+        public ICollection<TelefoneData> Telefones { get; set; }
+        public EnderecoData Endereco { get; set; }
     }
 }

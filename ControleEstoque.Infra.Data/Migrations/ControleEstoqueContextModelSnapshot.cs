@@ -15,19 +15,22 @@ namespace ControleEstoque.Infra.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.1");
+                .HasAnnotation("ProductVersion", "5.0.3")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("ControleEstoque.Domain.Entities.Cliente", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Cpf")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("EnderecoId")
                         .HasColumnType("bigint");
@@ -47,7 +50,7 @@ namespace ControleEstoque.Infra.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Bairro")
                         .HasColumnType("nvarchar(max)");
@@ -57,6 +60,9 @@ namespace ControleEstoque.Infra.Data.Migrations
 
                     b.Property<string>("Cidade")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("ClienteId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Complemento")
                         .HasColumnType("nvarchar(max)");
@@ -72,6 +78,8 @@ namespace ControleEstoque.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("Enderecos");
                 });
 
@@ -80,7 +88,7 @@ namespace ControleEstoque.Infra.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<long?>("ClienteId")
                         .HasColumnType("bigint");
@@ -103,7 +111,7 @@ namespace ControleEstoque.Infra.Data.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
-                        .UseIdentityColumn();
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<decimal>("Cpf")
                         .HasColumnType("decimal(18,2)");
@@ -131,11 +139,24 @@ namespace ControleEstoque.Infra.Data.Migrations
                     b.Navigation("Endereco");
                 });
 
+            modelBuilder.Entity("ControleEstoque.Domain.Entities.Endereco", b =>
+                {
+                    b.HasOne("ControleEstoque.Domain.Entities.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Cliente");
+                });
+
             modelBuilder.Entity("ControleEstoque.Domain.Entities.Telefone", b =>
                 {
-                    b.HasOne("ControleEstoque.Domain.Entities.Cliente", null)
+                    b.HasOne("ControleEstoque.Domain.Entities.Cliente", "Cliente")
                         .WithMany("Telefones")
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("ControleEstoque.Domain.Entities.Cliente", b =>

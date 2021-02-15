@@ -19,6 +19,7 @@ namespace ControleEstoque.Domain.Entities
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
+        public virtual Cliente Cliente { get; set; }
 
         public Endereco()
         {
